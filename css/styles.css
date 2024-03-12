@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    --color-primario: #eff1fa;
+    --dark-blue: #0A3871;
+    --gray: #495057;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    height: 100dvh;
+    display: flex;
+    background-color: var(--color-primario);
+}
+
+header {
+    margin-inline: 5rem;
+    margin-top: 0.5rem;
+}
+
+.logo {
+    position: absolute;
+    top: 0.5rem;
+    color: var(--dark-blue);
+}
+
+main {
+    width: 100dvw;
+    height: 80dvh;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-block-end: 4rem;
+    margin-block-start: 5rem;
+    margin-inline: 4rem;
+}
+
+.encriptador {
+    width: clamp(60%, 100%, 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.encriptador textarea {
+    height: 75%;
+    padding: 1rem;
+    background-color: var(--color-primario);
+    color: var(--dark-blue);
+    font-size: 1.2rem;
+    border: none;
+}
+
+.encriptador textarea::placeholder {
+    color:var(--dark-blue)
+}
+
+.encriptador span {
+    font-size: 0.6rem;
+    color: var(--gray);
+    opacity: 0.8;
+    position: relative;
+    bottom: -1rem;
+}
+
+.encriptador span img {
+    position: relative;
+    top: 0.1rem;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.boton {
+    flex: 1;
+    padding-block: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: var(--dark-blue);
+    color: var(--color-primario);
+    cursor: pointer;
+    animation: all 0.3s ease; 
+}
+
+.boton:active {
+    transform: scale(0.95);
+}
+
+.boton.desencriptar {
+    background-color: #D8DFE8;
+    color: var(--dark-blue);
+    border: 1px solid var(--dark-blue);
+}
+
+.copiar {
+    width: 100%;
+    max-height: 3rem;
+    position: sticky;
+    bottom: 0;
+}
+
+.contenedor-desencriptado {
+    background-color: #fff;
+    width: 30%;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: space-around;
+    text-align: center;
+}
+
+.contenedor-desencriptado img {
+    align-self: center;
+}
+
+@media (max-width: 768px) {
+
+    header {
+        margin-inline: 3rem;
+    }
+
+    main{
+        flex-direction: column;
+        justify-content: flex-start;
+        margin: 0;
+        padding-inline: 2rem;
+        height: 100dvh;
+    }
+
+    .encriptador{
+        width: 100%;
+        height: 60%;
+        margin-block-start: 3rem;
+    }
+    
+    .botones {
+        justify-content: space-between;
+    }
+
+    .contenedor-desencriptado {
+        width: 100%;
+        padding: 0;
+        margin: 0
+    }
+
+    .contenedor-desencriptado h2 {
+        margin-top: 2rem;
+        margin-inline: 1rem;
+    }
+
+    .contenedor-desencriptado p {
+        margin-block-end: 1rem;
+    }
+
+    .contenedor-desencriptado img {
+        display: none;
+    }
+}
+
+@media (max-width: 375px){
+    :root {
+        font-size: 12px;
+    }
+
+    .contenedor-desencriptado {
+        padding: 1rem;
+    }
+}
