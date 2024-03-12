@@ -9,6 +9,14 @@ boton_copiar.classList.add('boton');
 boton_copiar.classList.add('copiar');
 boton_copiar.textContent = "Copiar";
 
+let llaves_de_encriptar = {
+    'a' : 'ai',
+    'e' : 'enter',
+    'i' : 'imes',
+    'o' : 'ober',
+    'u' : 'ufat'
+}
+
 boton_copiar.addEventListener('click', () => {
     copyToClipboard(element.textContent)
 })
@@ -34,31 +42,19 @@ function limpiar_contenedor() {
 }
 
 function encriptar_texto(texto) {
-    let result = texto.split('').map( char => {
-        let character = char.charCodeAt(char.index)
-        if (character + 13 > 122) {
-            return character - 12
-        } else {   
-            return character + 13
-        }
+    return texto.replace(/a|e|i|o|u/g, function(match) {
+        return llaves_de_encriptar[match]; // Reemplazamos la clave con su valor del diccionario
     });
-    
-    return result.map( numero => String.fromCharCode(numero)).join('');
 }
 
 function desencriptar_texto(texto) {
-    let result = texto.split('').map( char => {
-        let character = char.charCodeAt(char.index)
-        if (character - 13 < 97) {
-            if (character == 45)  {
-                return 32
+    return texto.replace(/ai|enter|imes|ober|ufat/g, function(match) {
+        for (let key in llaves_de_encriptar) {
+            if (llaves_de_encriptar[key] === match) {
+                return key; 
             }
-            return character + 12
-        } else {
-            return character - 13
         }
     });
-    return result.map( numero => String.fromCharCode(numero)).join('');
 }
 
 const copyToClipboard = async str => {
